@@ -54,18 +54,55 @@ view: users {
     drill_fields: [detail*]
   }
 
+  measure: m1 {
+    type: number
+    sql: ${id}/(${id}-13) ;;
+    value_format: "$0.00"
+  }
+  measure: m2 {
+    type: number
+    sql: ${m1}/(${id}-13) ;;
+    value_format: "$0.00"
+  }
+  measure: total {
+    type: sum
+    sql: ${id} ;;
+    value_format: "$0.00"
+  }
+  measure: m3 {
+    type: number
+    sql: ${m2}/(${m2}-3.75) ;;
+  }
+
+  measure: test {
+    hidden: yes
+    group_label: "How are you"
+    label: "Need to remove show all"
+    type: number
+    sql: 1.0*${total}/nullif(${m3},0) ;;
+    value_format_name: percent_1
+    link: {
+      label: "Show All"
+      url: "https://gcpl2316.cloud.looker.com/x/VCOoDfhVpWLGhyYdwNRMdo"
+    }
+    link: {
+      label: "Show Below"
+      url: "https://gcpl2316.cloud.looker.com/x/QQenNFfIbU7Bix3IUXEwhK"
+    }
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	first_name,
-	last_name,
-	events.count,
-	orders.count,
-	saralooker.count,
-	sindhu.count,
-	user_data.count
-	]
+  id,
+  first_name,
+  last_name,
+  events.count,
+  orders.count,
+  saralooker.count,
+  sindhu.count,
+  user_data.count
+  ]
   }
 
 }
