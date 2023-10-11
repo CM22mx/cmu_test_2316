@@ -1,6 +1,5 @@
----
 - dashboard: embed_LookML_Dashboard
-  title: LookML Dashboard embedded test
+  title: LookMLDashboard_embeddedtest
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
