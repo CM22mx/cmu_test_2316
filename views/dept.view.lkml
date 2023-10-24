@@ -6,6 +6,7 @@ view: dept {
     primary_key: yes
     type: number
     sql: ${TABLE}.DeptID ;;
+    order_by_field: dept_name
   }
   dimension: dept_name {
     type: string
